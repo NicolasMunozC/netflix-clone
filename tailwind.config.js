@@ -10,8 +10,14 @@ module.exports = {
   ],
   theme: {
     extend: {
+      spacing: {
+        '9/10': '90vh'
+      },
+      inset: {
+        '30': '7.5rem'
+      },
       backgroundImage: {
-        'bg-home-1' : "linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),url('/bg-home-1.jpg')"
+        'bg-home-1' : "linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),url('/images/home/bg-home-1.jpg')"
       }
     },
   },
