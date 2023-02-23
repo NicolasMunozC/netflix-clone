@@ -1,11 +1,21 @@
 import Footer from '@/components/Footer'
 import Image from 'next/image'
-import React from 'react'
-import { signIn } from '@/services'
+import React, { useEffect } from 'react'
+import { useRouter } from 'next/router'
 
-function login() {
+export default function Login() {
 
+    const router = useRouter()
+    useEffect( () => {
+        const currentToken = window.localStorage.getItem('token')
+        if(currentToken) router.push('/browse')
+    }, [])
+  
 
+    const setToken = () => {
+        window.localStorage.setItem('token', 'a')
+        router.push('/browse')
+    }
 
 
   return (
@@ -18,7 +28,7 @@ function login() {
             <h1 className='text-white font-semibold text-2xl mb-4'>Sign In</h1>
             <input className='h-10 rounded-sm mb-3 bg-stone-700 px-4 text-sm' type='text' placeholder='Email or phone number' defaultValue='test@test.com' />
             <input className='h-10 rounded-sm mb-5 bg-stone-700 px-4 text-sm' type='password' placeholder='Password' defaultValue='test123' />
-            <button className=' bg-red-600 text-white font-semibold h-10 rounded-md mb-2' onClick={signIn}>Sign In</button>
+            <button className=' bg-red-600 text-white font-semibold h-10 rounded-md mb-2' onClick={setToken}>Sign In</button>
             <div className='flex flex-row justify-between font-semibold text-sm mb-2'>
                 <div className='flex flex-row'>
                 <label htmlFor='checkbox'>
@@ -40,5 +50,3 @@ function login() {
     </div>
   )
 }
-
-export default login
